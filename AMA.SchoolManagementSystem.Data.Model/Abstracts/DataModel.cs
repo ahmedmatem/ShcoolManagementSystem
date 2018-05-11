@@ -6,8 +6,16 @@
 
     using AMA.SchoolManagementSystem.Data.Model.Contracts;
 
-    public abstract class DataModel : IDeleted, IAuditable
+    public abstract class DataModel : IDeletable, IAuditable
     {
+        public DataModel()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
+        [Key]
+        public Guid Id { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime? CreatedOn { get; set; }
 
