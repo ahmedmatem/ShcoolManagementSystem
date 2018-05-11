@@ -275,8 +275,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\AMA.SchoolManagementSystem.Data\AMA.SchoolManagementSystem.Data.csproj">
-      <Project>{75dbb49d-38f7-4157-ad48-19349699a287}</Project>
+    <ProjectReference Include="..\..\AMA.SchoolManagementSystem.Data.Model\AMA.SchoolManagementSystem.Data.Model.csproj">
+      <Project>{ccd7dda2-374f-436e-967c-49526173f39a}</Project>
+      <Name>AMA.SchoolManagementSystem.Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AMA.SchoolManagementSystem.Data\AMA.SchoolManagementSystem.Data.csproj">
+      <Project>{30924731-3368-403f-b2be-bc3a160dfb5a}</Project>
       <Name>AMA.SchoolManagementSystem.Data</Name>
     </ProjectReference>
   </ItemGroup>

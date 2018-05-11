@@ -1,5 +1,6 @@
-﻿namespace AMA.SchoolManagementSystem.Data.Models
+﻿namespace AMA.SchoolManagementSystem.Data
 {
+    using AMA.SchoolManagementSystem.Data.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

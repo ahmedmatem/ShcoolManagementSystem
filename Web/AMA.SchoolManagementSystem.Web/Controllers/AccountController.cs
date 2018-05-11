@@ -9,8 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AMA.SchoolManagementSystem.Web.Models;
-using AMA.SchoolManagementSystem.Data;
-using AMA.SchoolManagementSystem.Data.Models;
+using AMA.SchoolManagementSystem.Data.Model;
 
 namespace AMA.SchoolManagementSystem.Web.Controllers
 {
@@ -153,7 +152,7 @@ namespace AMA.SchoolManagementSystem.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -369,7 +368,7 @@ namespace AMA.SchoolManagementSystem.Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
