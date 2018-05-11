@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using AMA.SchoolManagementSystem.Web.Models;
+using AMA.SchoolManagementSystem.Data;
+using AMA.SchoolManagementSystem.Data.Models;
 
 namespace AMA.SchoolManagementSystem.Web
 {

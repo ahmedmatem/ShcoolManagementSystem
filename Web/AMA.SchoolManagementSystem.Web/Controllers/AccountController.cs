@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AMA.SchoolManagementSystem.Web.Models;
+using AMA.SchoolManagementSystem.Data;
+using AMA.SchoolManagementSystem.Data.Models;
 
 namespace AMA.SchoolManagementSystem.Web.Controllers
 {
