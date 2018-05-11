@@ -9,7 +9,8 @@ namespace AMA.SchoolManagementSystem.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(AMA.SchoolManagementSystem.Data.MsSqlDbContext context)
