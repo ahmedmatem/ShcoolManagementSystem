@@ -4,12 +4,16 @@
 namespace AMA.SchoolManagementSystem.Web.App_Start
 {
     using System;
+    using System.Data.Entity;
     using System.Web;
-
+    using AMA.SchoolManagementSystem.Data;
+    using AMA.SchoolManagementSystem.Data.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Extensions.Conventions;
+    using Ninject.Web.Common.WebHost;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +65,14 @@ namespace AMA.SchoolManagementSystem.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind(x => {
+                x.FromThisAssembly()
+                .SelectAllClasses()
+                .BindDefaultInterface();
+            });
+
+            kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
+            kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
         }        
     }
 }
