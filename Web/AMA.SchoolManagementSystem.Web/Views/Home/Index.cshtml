@@ -1,4 +1,7 @@
-﻿@{
+﻿@using AMA.SchoolManagementSystem.Web.ViewModels.Home
+@model IEnumerable<PostViewModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -28,4 +31,17 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-4">
+            <h2>@post.Title</h2>
+            <p>@post.Content</p>
+            <p>@post.AuthorEmail - Posted on: @Html.DisplayFor(x => post.PostedOn)</p>
+        </div>
+    }
 </div>

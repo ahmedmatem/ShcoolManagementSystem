@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using AMA.SchoolManagementSystem.Web.Models;
+using AMA.SchoolManagementSystem.Web.ViewModels;
 using AMA.SchoolManagementSystem.Data.Model;
 
 namespace AMA.SchoolManagementSystem.Web.Controllers

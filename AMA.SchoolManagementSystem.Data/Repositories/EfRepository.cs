@@ -77,9 +77,9 @@ namespace AMA.SchoolManagementSystem.Data.Repositories
         //    this.DbSet.Remove(entity);
         //}
 
-        public void Save()
-        {
-            this.Context.SaveChanges();
-        }
+        //public void Save()
+        //{
+        //    this.Context.SaveChanges();
+        //}
     }
 }

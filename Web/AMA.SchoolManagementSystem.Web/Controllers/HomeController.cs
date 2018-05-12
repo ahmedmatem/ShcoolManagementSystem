@@ -1,17 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace AMA.SchoolManagementSystem.Web.Controllers
+﻿namespace AMA.SchoolManagementSystem.Web.Controllers
 {
+    using AMA.SchoolManagementSystem.Data.Contracts;
+    using AMA.SchoolManagementSystem.Data.Model;
+    using AMA.SchoolManagementSystem.Services.Contracts;
+    using AMA.SchoolManagementSystem.Web.Inrastructure.Mapping;
+    using AMA.SchoolManagementSystem.Web.ViewModels.Home;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+
     public class HomeController : Controller
     {
+        private readonly IPostsService postsService;
+        private readonly ISaveContext context;
+
+        public HomeController(IPostsService postsService, ISaveContext context)
+        {
+            this.postsService = postsService;
+            this.context = context;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var posts = postsService
+                .GetAll()
+                .ProjectTo<PostViewModel>()
+                .ToList();
+
+            return View(posts);
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult UpdatePost(PostViewModel model)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        var post = new Post()
+        //        {
+        //            Title = model.Title,
+        //            Content = model.Content,
+        //            CreatedOn = model.PostedOn
+        //        };
+
+        //        postsService.Update(post);
+        //        context.Commit();
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
 
         public ActionResult About()
         {
