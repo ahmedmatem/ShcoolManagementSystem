@@ -21,7 +21,7 @@ namespace AMA.SchoolManagementSystem.Data.Repositories
 
         private IDbSet<T> DbSet { get; }
 
-        private DbContext Context { get; }
+        private MsSqlDbContext Context { get; }
 
         public IQueryable<T> All()
         {

@@ -1,7 +1,15 @@
 ﻿namespace AMA.SchoolManagementSystem.Web.ViewModels
 {
+    using AMA.SchoolManagementSystem.Data.Model.Contracts;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    public enum LoginRoleType
+    {
+        Родител = 0,
+        Ученик = 1,
+        Учител = 2
+    }
 
     public class ExternalLoginConfirmationViewModel
     {
@@ -48,6 +56,9 @@
 
     public class LoginViewModel
     {
+        [Required]
+        public LoginRoleType LoginRoleType { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]

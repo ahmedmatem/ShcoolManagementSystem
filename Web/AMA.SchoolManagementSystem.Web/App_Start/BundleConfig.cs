@@ -27,6 +27,8 @@ namespace AMA.SchoolManagementSystem.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-select.min.css",
+                      "~/Content/fontawesome-all.css",
                       "~/Content/site.css"));
         }
     }

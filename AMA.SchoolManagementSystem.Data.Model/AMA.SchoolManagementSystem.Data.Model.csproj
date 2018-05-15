@@ -54,10 +54,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\DataModel.cs" />
+    <Compile Include="Abstracts\Person.cs" />
+    <Compile Include="Abstracts\SchoolObject.cs" />
+    <Compile Include="Address.cs" />
     <Compile Include="Contracts\IAuditable.cs" />
     <Compile Include="Contracts\IDeletable.cs" />
+    <Compile Include="Contracts\PositionType.cs" />
+    <Compile Include="Discipline.cs" />
+    <Compile Include="ERegister.cs" />
+    <Compile Include="Group.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="Principal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="School.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="Teacher.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

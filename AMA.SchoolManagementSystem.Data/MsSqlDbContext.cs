@@ -1,6 +1,7 @@
 ﻿namespace AMA.SchoolManagementSystem.Data
 {
     using AMA.SchoolManagementSystem.Data.Model;
+    using AMA.SchoolManagementSystem.Data.Model.Abstracts;
     using AMA.SchoolManagementSystem.Data.Model.Contracts;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
@@ -19,6 +20,20 @@
 
         public IDbSet<Post> Posts { get; set; }
 
+        public IDbSet<School> Schools { get; set; }
+
+        public IDbSet<Principal> Principals { get; set; }
+
+        public IDbSet<Student> Students { get; set; }
+
+        public IDbSet<Teacher> Teachers { get; set; }
+
+        public IDbSet<Discipline> Disciplines { get; set; }
+
+        public IDbSet<Group> Groups { get; set; }
+
+        public IDbSet<Address> Addresses { get; set; }
+
         public static MsSqlDbContext Create()
         {
             return new MsSqlDbContext();
@@ -26,6 +41,14 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Teacher>()
+                .HasOptional(t => t.Group)
+                .WithRequired(g => g.Teacher);
+
+            modelBuilder.Entity<ERegister>()
+                .HasRequired(x => x.School)
+                .WithRequiredPrincipal(x => x.ERegister);
+
             base.OnModelCreating(modelBuilder);
         }
 

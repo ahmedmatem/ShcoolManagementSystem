@@ -10,7 +10,7 @@
     {
         public DataModel()
         {
-            this.Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
 
         [Key]

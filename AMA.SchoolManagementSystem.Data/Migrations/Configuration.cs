@@ -27,7 +27,7 @@ namespace AMA.SchoolManagementSystem.Data.Migrations
             this.SeedPosts(context);
         }
 
-        private void SeedPosts(MsSqlDbContext context)
+        private void SeedPosts(Data.MsSqlDbContext context)
         {
             if (!context.Posts.Any())
             {
@@ -46,7 +46,7 @@ namespace AMA.SchoolManagementSystem.Data.Migrations
             }
         }
 
-        private void SeedAdmin(MsSqlDbContext context)
+        private void SeedAdmin(Data.MsSqlDbContext context)
         {
 
             if (!context.Roles.Any())

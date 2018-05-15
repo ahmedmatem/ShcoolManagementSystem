@@ -7,7 +7,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Post : DataModel
+    public class Post : SchoolObject
     {
         public string Title { get; set; }
 
