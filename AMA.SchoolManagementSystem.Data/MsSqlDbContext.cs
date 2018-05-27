@@ -18,11 +18,7 @@
         {
         }
 
-        public IDbSet<Post> Posts { get; set; }
-
         public IDbSet<School> Schools { get; set; }
-
-        public IDbSet<Principal> Principals { get; set; }
 
         public IDbSet<Student> Students { get; set; }
 
@@ -34,6 +30,8 @@
 
         public IDbSet<Address> Addresses { get; set; }
 
+        public IDbSet<Contact> Contacts { get; set; }
+
         public static MsSqlDbContext Create()
         {
             return new MsSqlDbContext();
@@ -44,10 +42,6 @@
             modelBuilder.Entity<Teacher>()
                 .HasOptional(t => t.Group)
                 .WithRequired(g => g.Teacher);
-
-            modelBuilder.Entity<ERegister>()
-                .HasRequired(x => x.School)
-                .WithRequiredPrincipal(x => x.ERegister);
 
             base.OnModelCreating(modelBuilder);
         }

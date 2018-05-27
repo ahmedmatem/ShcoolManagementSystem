@@ -3,16 +3,17 @@
     using AMA.SchoolManagementSystem.Data.Model.Abstracts;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
-    public class Post : SchoolObject
+    
+    public class Contact : DataModel
     {
-        public string Title { get; set; }
+        public string Phone1 { get; set; }
 
-        public string Content { get; set; }
+        public string Phone2 { get; set; }
 
-        public virtual User Author { get; set;  }
+        public string Email { get; set; }
     }
 }

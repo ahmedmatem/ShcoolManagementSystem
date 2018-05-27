@@ -1,5 +1,6 @@
 ﻿namespace AMA.SchoolManagementSystem.Data.Model
 {
+    using AMA.SchoolManagementSystem.Data.Model.Abstracts;
     using AMA.SchoolManagementSystem.Data.Model.Contracts;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -15,13 +16,13 @@
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser, IDeletable, IAuditable
     {
-        private ICollection<Post> posts;
+        private ICollection<Teacher> teachers;
 
         public User()
         {
-            this.posts = new HashSet<Post>();
+            this.teachers = new HashSet<Teacher>();
         }
-        
+
         [DataType(DataType.DateTime)]
         public DateTime? CreatedOn { get; set; }
 
@@ -34,17 +35,9 @@
         [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
 
-        public virtual ICollection<Post> Post
-        {
-            get
-            {
-                return this.posts;
-            }
-            set
-            {
-                this.posts = value;
-            }
-        }
+        // navigation properties
+
+        public virtual ICollection<Teacher> Teachers { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

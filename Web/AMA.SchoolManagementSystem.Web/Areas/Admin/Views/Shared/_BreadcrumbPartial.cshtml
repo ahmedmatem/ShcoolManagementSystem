@@ -8,7 +8,7 @@
             Breadcrumb breadcrumb = Model.ElementAt<Breadcrumb>(i);
             if (i == Model.Count - 1)
             {
-                <li class="breadcrumb-item active" aria-current="page">@breadcrumb.Name</li>
+                <li class="breadcrumb-item active" aria-current="page">@Html.Raw(breadcrumb.Name)</li>
             }
             else
             {

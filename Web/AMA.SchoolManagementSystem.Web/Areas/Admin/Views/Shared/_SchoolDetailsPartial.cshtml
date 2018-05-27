@@ -1,0 +1,13 @@
+﻿@using AMA.SchoolManagementSystem.Web.Areas.Admin.ViewModels
+@model SchoolViewModel
+
+
+<p>
+    <h4 class="text-info">@Model.Name</h4>
+<p>
+    @Model.City<br />
+    @Model.AddressLine1<br />
+    тел: @Model.Phone1<br />
+    имейл: @Model.Email
+</p>
+<a href="@Url.Content("~/admin/school/index/" + Model.Id)" class="btn btn-outline-info btn-sm">Избери</a>

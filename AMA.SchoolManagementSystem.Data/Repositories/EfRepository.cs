@@ -1,4 +1,5 @@
-﻿using AMA.SchoolManagementSystem.Data.Model.Contracts;
+﻿using AMA.SchoolManagementSystem.Data.Model.Abstracts;
+using AMA.SchoolManagementSystem.Data.Model.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace AMA.SchoolManagementSystem.Data.Repositories
 {
     public class EfRepository<T> : IEfRepository<T>
-        where T : class, IDeletable
+        where T : DataModel, IDeletable
     {
         public EfRepository(MsSqlDbContext context)
         {
@@ -33,10 +34,10 @@ namespace AMA.SchoolManagementSystem.Data.Repositories
             return this.DbSet;
         }
 
-        //public T GetById(int id)
-        //{
-        //    return this.All().FirstOrDefault(x => x.Id == id);
-        //}
+        public T GetById(int id)
+        {
+            return this.All().FirstOrDefault(x => x.Id == id);
+        }
 
         public void Add(T entity)
         {

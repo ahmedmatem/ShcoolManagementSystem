@@ -7,13 +7,13 @@ namespace AMA.SchoolManagementSystem.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class relUser_Teacher : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(relUser_Teacher));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805121123342_Initial"; }
+            get { return "201805251548337_rel User_Teacher"; }
         }
         
         string IMigrationMetadata.Source

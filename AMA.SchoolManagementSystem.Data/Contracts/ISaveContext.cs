@@ -2,6 +2,8 @@
 {
     public interface ISaveContext
     {
+        MsSqlDbContext Context { get; }
+
         void Commit();
     }
 }

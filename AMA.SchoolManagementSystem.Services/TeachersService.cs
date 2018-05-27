@@ -25,5 +25,10 @@
         {
             teacherRepository.Add(newTeacher);
         }
+
+        public IQueryable<Teacher> All()
+        {
+            return teacherRepository.All();
+        }
     }
 }

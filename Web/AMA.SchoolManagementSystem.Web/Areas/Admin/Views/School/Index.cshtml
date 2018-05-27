@@ -1,0 +1,31 @@
+﻿@using AMA.SchoolManagementSystem.Web.Areas.Admin.ViewModels
+@model SchoolViewModel
+
+@{
+                /**/
+
+                ViewBag.Title = "Училище";
+                Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-info">@Model.Name</h2>
+
+<a href="@Url.Content("~/admin/school/edit")" class=" btn btn-outline-info"><i class="fa fa-edit"></i> Редактиране</a>
+@if (Model.Admin == null)
+{
+    <a href="@Url.Content("~/admin/school/addadmin/" + Model.Id)" class=" btn btn-outline-info"><i class="fa fa-plus"></i> Администратор</a>
+}
+else
+{
+    <a href="@Url.Content("~/admin/school/editadmin/" + Model.Id)" class=" btn btn-outline-info"><i class="fa fa-edit"></i> Администратор</a>
+
+}
+
+<hr />
+
+<p>
+    @Model.City<br />
+    @Model.AddressLine1<br />
+    тел: @Model.Phone1<br />
+    имейл: @Model.Email
+</p>

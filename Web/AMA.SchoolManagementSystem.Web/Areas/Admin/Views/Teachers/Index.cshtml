@@ -1,10 +1,40 @@
-﻿
+﻿@using AMA.SchoolManagementSystem.Web.Areas.Admin.ViewModels
+@model ICollection<TeacherViewModel>
+
 @{
     ViewBag.Title = "Учители";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_PrincipalLayout.cshtml";
+    TeacherViewModel teacherVM = new TeacherViewModel();
+    int teacherCounter = 1;
 }
 
-<div class="row">
-    <a href="@Url.Content("~/admin/teachers/add")" class=" btn btn-outline-info"><i class="fa fa-plus"></i> Нов учител</a>
-</div>
+<a href="@Url.Content("~/admin/teachers/add")" class=" btn btn-outline-info"><i class="fa fa-plus"></i> Нов учител</a>
 
+@if (Model != null && Model.Count > 0)
+{
+    <hr />
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="bg-info">
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">
+                    @Html.DisplayNameFor(m => new TeacherViewModel().Name)
+                </th>
+                <th scope="col" class="text-center">Редактиране</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (TeacherViewModel tvm in Model)
+            {
+                <tr>
+                    <th scope="row" class="text-center">@(teacherCounter++)</th>
+                    <td>@tvm.Name</td>
+                    <td class="text-center">
+                        <a href=""><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+                        <a href=""><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

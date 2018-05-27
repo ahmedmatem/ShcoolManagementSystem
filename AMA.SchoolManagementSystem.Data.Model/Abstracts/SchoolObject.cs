@@ -8,6 +8,6 @@
 
     public abstract class SchoolObject : DataModel
     {
-        public virtual string Name { get; }
+        public virtual string Name { get; set; }
     }
 }

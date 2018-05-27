@@ -11,6 +11,8 @@
             this.dbContext = dbContext;
         }
 
+        public MsSqlDbContext Context => dbContext;
+
         public void Commit()
         {
             dbContext.SaveChanges();

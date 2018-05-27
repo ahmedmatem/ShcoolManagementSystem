@@ -1,32 +1,42 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using AMA.SchoolManagementSystem.Web.ViewModels;
-using AMA.SchoolManagementSystem.Data.Model;
-
-namespace AMA.SchoolManagementSystem.Web.Controllers
+﻿namespace AMA.SchoolManagementSystem.Web.Controllers
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+
+    using AMA.SchoolManagementSystem.Web.ViewModels;
+    using AMA.SchoolManagementSystem.Data.Model;
+    using AMA.SchoolManagementSystem.Web.Inrastructure;
+    using AMA.SchoolManagementSystem.Data.Repositories;
+    using AMA.SchoolManagementSystem.Data;
+
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private IEfRepository<School> _schoolRepository;
+
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, 
+            ApplicationSignInManager signInManager,
+            IEfRepository<School> schoolRepository)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _schoolRepository = schoolRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -50,6 +60,18 @@ namespace AMA.SchoolManagementSystem.Web.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public IEfRepository<School> SchoolRepository
+        {
+            get
+            {
+                return _schoolRepository ?? new EfRepository<School>(MsSqlDbContext.Create());
+            }
+            private set
+            {
+                _schoolRepository = value;
             }
         }
 
@@ -80,7 +102,8 @@ namespace AMA.SchoolManagementSystem.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    return await RedirectAccordingRoleAsync(model, returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -90,6 +113,31 @@ namespace AMA.SchoolManagementSystem.Web.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+
+
+        private async Task<ActionResult> RedirectAccordingRoleAsync(LoginViewModel model, string returnUrl)
+        {
+            var user = await UserManager.FindAsync(model.Email, model.Password);
+            if(UserManager.IsInRole(user.Id, WebRoles.SuperAdmin))
+            {
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+            }
+            
+            if (UserManager.IsInRole(user.Id, WebRoles.Admin))
+            {
+                var schools = SchoolRepository.All().ToList();
+                foreach (var school in schools)
+                {
+                    if(school.Admin != null && school.AdminId.Equals(user.Id))
+                    {
+                        return RedirectToAction("Index/" + school.Id, "School", new { area = "Admin" });
+                    }
+                }
+            }
+
+            return RedirectToLocal(returnUrl);
         }
 
         //

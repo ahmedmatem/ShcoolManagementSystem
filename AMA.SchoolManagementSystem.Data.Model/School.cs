@@ -9,13 +9,28 @@
     using System.Threading.Tasks;
 
     public class School : SchoolObject
-    {        
-        public Guid AddressId { get; set; }
+    {
+        private ICollection<Teacher> teachers;
 
-        public Guid ERegisterId { get; set; }
+        public School()
+        {
+            this.teachers = new HashSet<Teacher>();
+        }
 
-        public virtual string Address { get; set; }
-        
-        public virtual ERegister ERegister { get; set; }
+        public string AdminId { get; set; }
+
+        public int AddressId { get; set; }
+
+        public int ContactId { get; set; }
+
+        // navigation properties
+
+        public virtual User Admin { get; set; }
+
+        public virtual Address Address { get; set; }
+
+        public virtual Contact Contact { get; set; }
+
+        public virtual ICollection<Teacher> Teachers { get; set; }
     }
 }

@@ -1,0 +1,123 @@
+﻿@using AMA.SchoolManagementSystem.Web.Areas.Admin.ViewModels
+@model SchoolViewModel
+
+@{
+    ViewBag.Title = "Добави училище";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row text-info">
+    <div class="col-10 text-center">
+        <h4>Добавяне на училище</h4>
+    </div>
+</div>
+<hr />
+@using (Html.BeginForm("Add", "School", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group row">
+        <div class="col-2 col-form-label text-right">
+            @Html.DisplayNameFor(m => m.Name)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+        <div class="offset-2 col-10 text-danger">
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group row text-info">
+        <div class="col-2 text-right">
+            Адрес
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2 col-form-label text-right">
+            @Html.DisplayNameFor(m => m.City)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+        </div>
+        <div class="offset-2 col-10 text-danger">
+            @Html.ValidationMessageFor(m => m.City)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2 col-form-label text-right">
+            @Html.DisplayNameFor(m => m.AddressLine1)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control" })
+        </div>
+        <div class="offset-2 col-10 text-danger">
+            @Html.ValidationMessageFor(m => m.AddressLine1)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2 col-form-label text-right">
+            @Html.DisplayNameFor(m => m.AddressLine2)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control" })
+        </div>
+        <div class="offset-2 col-10 text-danger">
+            @Html.ValidationMessageFor(m => m.AddressLine2)
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group row text-info">
+        <div class="col-2 text-right">
+            Контакт
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2 col-form-label text-right">
+            @Html.DisplayNameFor(m => m.Phone1)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(m => m.Phone1, new { @class = "form-control" })
+        </div>
+        <div class="offset-2 col-10 text-danger">
+            @Html.ValidationMessageFor(m => m.Phone1)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2 col-form-label text-right">
+            @Html.DisplayNameFor(m => m.Phone2)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(m => m.Phone2, new { @class = "form-control" })
+        </div>
+        <div class="offset-2 col-10 text-danger">
+            @Html.ValidationMessageFor(m => m.Phone2)
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2 col-form-label text-right">
+            @Html.DisplayNameFor(m => m.Email)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+        <div class="offset-2 col-10 text-danger">
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="offset-2">
+            <button type="submit" class="btn btn-outline-info">Добави</button>
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

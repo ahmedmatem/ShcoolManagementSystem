@@ -1,5 +1,6 @@
 ﻿namespace AMA.SchoolManagementSystem.Web.Areas.Admin.Controllers
 {
+    using AMA.SchoolManagementSystem.Web.Inrastructure;
     using AMA.SchoolManagementSystem.Web.Inrastructure.Components;
     using System;
     using System.Collections.Generic;
@@ -7,8 +8,8 @@
     using System.Web;
     using System.Web.Mvc;
 
-    [Authorize(Roles = "Admin")]
-    public class StudentsController : Controller
+    [Authorize(Roles = "SuperAdmin,Admin")]
+    public class StudentsController : BaseController
     {
         // GET: Admin/Students
         public ActionResult Index()

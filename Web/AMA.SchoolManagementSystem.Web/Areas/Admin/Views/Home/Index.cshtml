@@ -1,9 +1,26 @@
-﻿@using AMA.SchoolManagementSystem.Web.Inrastructure.Components
+﻿@using AMA.SchoolManagementSystem.Web.Areas.Admin.ViewModels
+@model ICollection<SchoolViewModel>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Начало";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminHomeLayout.cshtml";
 }
 
-<h2>Admin Index</h2>
 
+<h2 class="text-info">Регистрирани училища</h2>
+
+<a href="@Url.Content("~/admin/school/add")" class=" btn btn-outline-info"><i class="fa fa-plus"></i> Ново училище</a>
+
+<hr />
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="row">
+        @foreach (var schoolVM in Model)
+        {
+            <div class="col-md-4 col-sm-6">
+                @Html.Partial("_SchoolDetailsPartial", schoolVM)
+            </div>
+        }
+    </div>
+}

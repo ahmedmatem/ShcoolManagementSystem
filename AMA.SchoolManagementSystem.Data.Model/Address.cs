@@ -7,7 +7,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    
     public class Address : DataModel
     {
         public string City { get; set; }

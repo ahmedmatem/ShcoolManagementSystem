@@ -9,12 +9,13 @@
 
     public abstract class Person : SchoolObject
     {
-        public string FirstName { get; set; }
+        [NotMapped]
+        public string FirstName => Name.Split(' ')[0];
 
-        public string FatherName { get; set; }
+        [NotMapped]
+        public string FatherName => Name.Split(' ')[1];
 
-        public string LastName { get; set; }
-
-        public abstract string ShortName { get; }
+        [NotMapped]
+        public string LastName => Name.Split(' ')[2];
     }
 }

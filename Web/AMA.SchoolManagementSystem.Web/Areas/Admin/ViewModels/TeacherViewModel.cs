@@ -2,6 +2,7 @@
 {
     using AMA.SchoolManagementSystem.Data.Model;
     using AMA.SchoolManagementSystem.Web.Inrastructure.Mapping;
+    using AutoMapper;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -28,5 +29,8 @@
         [RegularExpression("^([a-zA-Zа-яА-Я ]+)$", ErrorMessage = "Името трябва да съдържа само букви")]
         [DisplayName("Фамилия")]
         public string LastName { get; set; }
+
+        [DisplayName("Име, презиме и фамилия")]
+        public string Name => String.Format("{0} {1} {2}", FirstName, FatherName, LastName);
     }
 }

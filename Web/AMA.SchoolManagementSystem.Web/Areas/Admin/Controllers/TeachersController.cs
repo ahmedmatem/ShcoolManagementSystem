@@ -1,20 +1,24 @@
 ﻿namespace AMA.SchoolManagementSystem.Web.Areas.Admin.Controllers
 {
-    using AMA.SchoolManagementSystem.Data.Contracts;
-    using AMA.SchoolManagementSystem.Data.Model;
-    using AMA.SchoolManagementSystem.Services.Contracts;
-    using AMA.SchoolManagementSystem.Web.App_Start;
-    using AMA.SchoolManagementSystem.Web.Areas.Admin.ViewModels;
-    using AMA.SchoolManagementSystem.Web.Inrastructure.Components;
-    using AutoMapper;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
 
-    [Authorize(Roles = "Admin")]
-    public class TeachersController : Controller
+    using AutoMapper;
+
+    using AMA.SchoolManagementSystem.Data.Contracts;
+    using AMA.SchoolManagementSystem.Data.Model;
+    using AMA.SchoolManagementSystem.Services.Contracts;
+    using AMA.SchoolManagementSystem.Web.App_Start;
+    using AMA.SchoolManagementSystem.Web.Areas.Admin.ViewModels;
+    using AMA.SchoolManagementSystem.Web.Inrastructure;
+    using AMA.SchoolManagementSystem.Web.Inrastructure.Components;
+    using AMA.SchoolManagementSystem.Web.Inrastructure.Mapping;
+
+    [Authorize(Roles = "SuperAdmin,Admin")]
+    public class TeachersController : BaseController
     {
         private readonly ITeachersService teachersService;
         private readonly ISaveContext context;
@@ -30,14 +34,18 @@
         // GET: Admin/Teachers
         public ActionResult Index()
         {
-
             ViewBag.Breadcrumb = new List<Breadcrumb>()
             {
                 new Breadcrumb(Breadcrumb.HomeName, Breadcrumb.AdminHomeUrl),
                 new Breadcrumb(Breadcrumb.TeachersName)
             };
 
-            return View();
+            var model = teachersService
+                                .All()
+                                .ProjectTo<TeacherViewModel>()
+                                .ToList();
+
+            return View(model);
         }
 
         // GET: Admin/Teachers/Add
@@ -63,8 +71,8 @@
             {
                 return View(model);
             }
-
-            Teacher newTeacher = mapper.Map<Teacher>(model);
+            
+            Teacher newTeacher = this.Mapper.Map<Teacher>(model);
             this.teachersService.Add(newTeacher);
             this.context.Commit();
 

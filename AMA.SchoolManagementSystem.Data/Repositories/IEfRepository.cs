@@ -1,7 +1,9 @@
 ﻿namespace AMA.SchoolManagementSystem.Data.Repositories
 {
-    using AMA.SchoolManagementSystem.Data.Model.Contracts;
+    using System;
     using System.Linq;
+
+    using AMA.SchoolManagementSystem.Data.Model.Contracts;
 
     public interface IEfRepository<T> 
         where T : class, IDeletable
@@ -10,7 +12,7 @@
 
         IQueryable<T> AllWithDeleted();
 
-        //T GetById(int id);
+        T GetById(int id);
 
         void Add(T entity);
 

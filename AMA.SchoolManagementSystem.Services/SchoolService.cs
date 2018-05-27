@@ -10,26 +10,20 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class PostsService : IPostsService
+    public class SchoolService : ISchoolService
     {
-        private readonly IEfRepository<Post> postsRepository;
+        private readonly IEfRepository<School> schoolRepository;
         private readonly ISaveContext context;
 
-        public PostsService(IEfRepository<Post> postsRepository, ISaveContext context)
+        public SchoolService(IEfRepository<School> schoolRepository, ISaveContext context)
         {
-            this.postsRepository = postsRepository;
+            this.schoolRepository = schoolRepository;
             this.context = context;
         }
 
-        public IQueryable<Post> GetAll()
+        public void Add(School newSchool)
         {
-            return postsRepository.All();
-        }
-
-        public void Update(Post post)
-        {
-            postsRepository.Update(post);
-            this.context.Commit();
+            schoolRepository.Add(newSchool);
         }
     }
 }

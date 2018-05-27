@@ -61,13 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ISaveContext.cs" />
-    <Compile Include="Migrations\201805121123342_Initial.cs" />
-    <Compile Include="Migrations\201805121123342_Initial.Designer.cs">
-      <DependentUpon>201805121123342_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201805231934338_Initial.cs" />
+    <Compile Include="Migrations\201805231934338_Initial.Designer.cs">
+      <DependentUpon>201805231934338_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805151357120_all tables.cs" />
-    <Compile Include="Migrations\201805151357120_all tables.Designer.cs">
-      <DependentUpon>201805151357120_all tables.cs</DependentUpon>
+    <Compile Include="Migrations\201805251548337_rel User_Teacher.cs" />
+    <Compile Include="Migrations\201805251548337_rel User_Teacher.Designer.cs">
+      <DependentUpon>201805251548337_rel User_Teacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805261823407_admin_in_school.cs" />
+    <Compile Include="Migrations\201805261823407_admin_in_school.Designer.cs">
+      <DependentUpon>201805261823407_admin_in_school.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
@@ -87,11 +91,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805121123342_Initial.resx">
-      <DependentUpon>201805121123342_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805231934338_Initial.resx">
+      <DependentUpon>201805231934338_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151357120_all tables.resx">
-      <DependentUpon>201805151357120_all tables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805251548337_rel User_Teacher.resx">
+      <DependentUpon>201805251548337_rel User_Teacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805261823407_admin_in_school.resx">
+      <DependentUpon>201805261823407_admin_in_school.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

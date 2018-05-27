@@ -7,13 +7,13 @@ namespace AMA.SchoolManagementSystem.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class alltables : IMigrationMetadata
+    public sealed partial class admin_in_school : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(alltables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(admin_in_school));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805151357120_all tables"; }
+            get { return "201805261823407_admin_in_school"; }
         }
         
         string IMigrationMetadata.Source

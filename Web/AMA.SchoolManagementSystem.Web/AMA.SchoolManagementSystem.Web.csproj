@@ -224,9 +224,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SchoolController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeachersController.cs" />
     <Compile Include="Areas\Admin\ViewModels\GroupViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\SchoolViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RegisterAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TeacherViewModel.cs" />
     <Compile Include="Areas\ERegister\Controllers\HomeController.cs" />
     <Compile Include="Areas\ERegister\ERegisterAreaRegistration.cs" />
@@ -236,17 +239,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Inrastructure\BaseController.cs" />
     <Compile Include="Inrastructure\Components\Breadcrumb.cs" />
+    <Compile Include="Inrastructure\Config.cs" />
+    <Compile Include="Inrastructure\DataAnnotations\SchoolAccessFilter.cs" />
     <Compile Include="Inrastructure\HtmlHelpers.cs" />
     <Compile Include="Inrastructure\Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Inrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Inrastructure\Mapping\IMapTo.cs" />
     <Compile Include="Inrastructure\Mapping\QueryableExtensions.cs" />
+    <Compile Include="Inrastructure\WebRoles.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Home\PostViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -372,6 +378,12 @@
     <Content Include="Areas\Admin\Views\Teachers\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Groups\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Groups\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\School\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\School\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SchoolDetailsPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminNavPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminHomeLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\School\AddAdmin.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -462,6 +474,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ERegister\Models\" />
+    <Folder Include="ViewModels\Home\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

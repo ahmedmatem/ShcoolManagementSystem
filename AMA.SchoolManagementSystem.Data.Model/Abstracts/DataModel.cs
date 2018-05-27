@@ -8,13 +8,8 @@
 
     public abstract class DataModel : IDeletable, IAuditable
     {
-        public DataModel()
-        {
-            Id = Guid.NewGuid();
-        }
-
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime? CreatedOn { get; set; }

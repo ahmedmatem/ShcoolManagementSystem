@@ -1,14 +1,16 @@
 ﻿namespace AMA.SchoolManagementSystem.Web.Areas.Admin.Controllers
 {
-    using AMA.SchoolManagementSystem.Web.Inrastructure.Components;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
 
-    [Authorize(Roles = "Admin")]
-    public class GroupsController : Controller
+    using AMA.SchoolManagementSystem.Web.Inrastructure;
+    using AMA.SchoolManagementSystem.Web.Inrastructure.Components;
+
+    [Authorize(Roles = "SuperAdmin,Admin")]
+    public class GroupsController : BaseController
     {
         // GET: Admin/Groups
         public ActionResult Index()
@@ -18,6 +20,8 @@
                 new Breadcrumb(Breadcrumb.HomeName, Breadcrumb.AdminHomeUrl),
                 new Breadcrumb(Breadcrumb.GroupsName)
             };
+
+
 
             return View();
         }

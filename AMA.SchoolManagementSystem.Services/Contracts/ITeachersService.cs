@@ -9,6 +9,8 @@
 
     public interface ITeachersService
     {
+        IQueryable<Teacher> All();
+
         void Add(Teacher newTeacher);
     }
 }
